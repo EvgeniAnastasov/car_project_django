@@ -1,0 +1,24 @@
+{% extends 'base/base.html' %}
+{% block page_content %}
+
+<!--Create Page-->
+<section class="createPage">
+
+    <form method="POST" action="{% url 'add car' %}" enctype="multipart/form-data">
+        <fieldset>
+            <legend>Add Car</legend>
+            <div class="container">
+
+                <!-- Form for Adding Album -->
+
+                {{ form }}
+                {% csrf_token %}
+
+                <!-- Button for Adding Album -->
+                <button class="add-album" type="submit">Add Car</button>
+            </div>
+        </fieldset>
+    </form>
+</section>
+
+{% endblock %}

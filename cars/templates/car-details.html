@@ -1,0 +1,61 @@
+{% extends 'base/base.html' %}
+{% block page_content %}
+
+    <!--Details Page-->
+    <section id="detailsPage">
+        <div class="wrapper">
+
+            <div class="albumCover">
+                <!-- Car Image -->
+                {% if car.image %}
+                    <img src="{{ car.image.url }}" alt="Car Image">
+                {% endif %}
+            </div>
+
+            <div class="albumInfo">
+
+                <div class="albumText">
+
+                    <!-- Car Info -->
+
+                    <h1>Car Brand: {{ car.car_brand }}</h1>
+                    <h3>Car Model: {{ car.car_model }}</h3>
+                    <h4>Type: {{ car.type }}</h4>
+                    <h4>Engine: {{ car.engine }}</h4>
+                    <h4>HP: {{ car.hp }}hp</h4>
+                    <h4>Year: {{ car.year }}</h4>
+                    <h4>Transmission: {{ car.transmission }}</h4>
+                    <h4>Mileage: {{ car.mileage }}km</h4>
+                    <h1>Owner: {{ car.user.email }}</h1>
+
+
+                    {% if not is_owner %}
+                        {% if not is_liked %}
+                            <div class="btn-group"><a href={% url 'like car' car.id %}>Like</a></div>
+
+                        {% else %}
+                            <div class="btn-group"><a href={% url 'like car' car.id %}>Dislike</a></div>
+                        {% endif %}
+
+                        <h3>Likes: {{ car.likes_count }}</h3>
+
+                    {% endif %}
+
+                </div>
+
+                <div class="actionBtn">
+                    <!-- Car Buttons -->
+
+                    {% if is_owner %}
+
+                        <a href="{% url 'car edit' car.pk %}" class="edit">Edit</a>
+                        <a href="{% url 'car delete' car.pk %}" class="remove">Delete</a>
+
+                    {% endif %}
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

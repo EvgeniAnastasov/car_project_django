@@ -1,0 +1,73 @@
+{% extends 'base/base.html' %}
+{% block page_content %}
+    {% load static %}
+
+    <!--Details Page-->
+    <section class="createPage">
+
+        <form method="POST" action="{% url 'profile details' %}" enctype="multipart/form-data">
+            <fieldset>
+                {% if profile.profile_image %}
+                    <img src="{{ profile.profile_image.url }}" alt="Car Image">
+                {% else %}
+                    <img src="{% static 'images/profile_img.jpg' %}" alt="Car Image">
+                {% endif %}
+                <legend>Profile Details</legend>
+                <div class="container">
+
+                    {{ form }}
+                    {% csrf_token %}
+
+                    <button class="add-album" type="submit">Update</button>
+
+                    <div class="albumCover">
+                        <!-- Car Image -->
+
+
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </section>
+
+
+    <section id="catalogPage">
+
+        {% if not cars %}
+            <p>No Cars in Your Garage!</p>
+        {% endif %}
+
+        {% if cars %}
+            <h1>Your Cars</h1>
+        {% endif %}
+
+        <!-- First Card-Box in catalog -->
+
+        {% for car in cars %}
+
+            <div class="card-box">
+
+                {% if car.image %}
+                    <img src="{{ car.image.url }}" alt="Car Image">
+                {% else %}
+                    {#            <img src="{% static 'car1.webp' %}" alt="Car Image">#}
+                {% endif %}
+                <div>
+                    <div class="text-center">
+                        <p class="name">Brand: {{ car.car_brand }}</p>
+                        <p class="artist">Model: {{ car.car_model }}</p>
+                        <p class="genre">HP: {{ car.hp }}hp</p>
+                        <p class="price">Year: {{ car.year }}</p>
+                    </div>
+                    <div class="btn-group">
+                        <a href="{% url 'car details' car.pk %}">Details</a>
+                    </div>
+                </div>
+            </div>
+            <!-- End First Card-Box in catalog -->
+
+        {% endfor %}
+
+    </section>
+
+{% endblock %}

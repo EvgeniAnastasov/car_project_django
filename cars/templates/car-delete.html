@@ -1,0 +1,26 @@
+{% extends 'base/base.html' %}
+{% block page_content %}
+
+<!--Edit Page-->
+<section class="editPage">
+    <form method="POST" action="{% url 'car delete' car.pk %}">
+        <fieldset>
+            <legend>Delete Car</legend>
+            <div class="container">
+
+                <!-- Form for Deleting a Car -->
+
+                {{ form }}
+                {% csrf_token %}
+
+                <!-- Button for Deleting a Car -->
+                <h3>Are You Sure You Want To Delete :</h3>
+                <h3>{{ car.car_brand }} {{ car.car_model }}</h3>
+
+                <button class="delete-album" type="submit">Delete Car</button>
+            </div>
+        </fieldset>
+    </form>
+</section>
+
+{% endblock %}
