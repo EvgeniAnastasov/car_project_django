@@ -13,6 +13,8 @@ import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+import cloudinary
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -23,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-41rl2t0tbw%zy_=yucz*l(kua=3wi!=t$(l7tfe$zu7i(d=^4m'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
     '127.0.0.1',
@@ -159,7 +161,7 @@ STATICFILES_DIRS = (
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 MEDIA_URL = 'media/'
-MEDIA_ROOT = BASE_DIR / 'mediafiles'
+MEDIA_ROOT = BASE_DIR + 'mediafiles'
 
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'mediafiles/')
 
@@ -169,3 +171,9 @@ MEDIA_ROOT = BASE_DIR / 'mediafiles'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'accounts.CarsUser'
+
+cloudinary.config(
+  cloud_name="dg4cyr2ap",
+  api_key="378116882818881",
+  api_secret="WjKdnSiDL--Mbl7jGxhGY16h6eU"
+)

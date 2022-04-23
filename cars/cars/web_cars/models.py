@@ -1,3 +1,4 @@
+from cloudinary.models import CloudinaryField
 from django.contrib.auth import get_user_model
 from django.core.validators import MinLengthValidator, MinValueValidator
 from django.db import models
@@ -74,14 +75,12 @@ class Car(models.Model):
 
     )
 
-    image = models.ImageField(
-        upload_to='mediafiles/',
-        # default='/static/car1.webp',
-        null=True,
-        blank=True,
-        validators=(
-            MaxFileSizeInMbValidator(10),
-        ),
+    image = CloudinaryField(
+        "Image",
+        overwrite=True,
+        resource_type="image",
+        transformation={"quality": "auto:eco"},
+        format="jpg",
     )
 
     mileage = models.IntegerField(

@@ -1,3 +1,4 @@
+from cloudinary.models import CloudinaryField
 from django.contrib.auth.base_user import AbstractBaseUser
 from django.contrib.auth.models import PermissionsMixin
 from django.core.validators import MinLengthValidator, MinValueValidator
@@ -64,8 +65,12 @@ class Profile(models.Model):
         default=0,
     )
 
-    profile_image = models.ImageField(
-        upload_to='profiles',
+    profile_image = CloudinaryField(
+        "Image",
+        overwrite=True,
+        resource_type="image",
+        transformation={"quality": "auto:eco"},
+        format="jpg",
     )
 
     user = models.OneToOneField(
