@@ -112,7 +112,7 @@ def logout_user(request):
 #
 #         return context
 
-class ProfileDetailsView(UpdateView):
+class ProfileDetailsView(LoginRequiredMixin, UpdateView):
     template_name = 'accounts/profile-details.html'
     form_class = ProfileForm
     model = Profile

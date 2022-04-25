@@ -1,5 +1,6 @@
 from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.views import generic as views
 from django.shortcuts import render, redirect
@@ -22,6 +23,7 @@ def show_index(request):
     return render(request, 'home-with-profile.html', context)
 
 
+@login_required()
 def like_car(request, pk):
     car = Car.objects.get(pk=pk)
     like_object_by_user = car.like_set.filter(user_id=request.user.id).first()
@@ -36,7 +38,7 @@ def like_car(request, pk):
     return redirect('car details', car.id)
 
 
-class CarAddView(CreateView):
+class CarAddView(LoginRequiredMixin, CreateView):
     form_class = AddCarForm
     template_name = 'add-car.html'
     success_url = reverse_lazy('show index')
@@ -121,7 +123,7 @@ def car_details(request, pk):
 #         return context
 
 
-class EditCarView(UpdateView):
+class EditCarView(LoginRequiredMixin, UpdateView):
     model = Car
     template_name = 'car-edit.html'
     form_class = EditCarForm
@@ -147,7 +149,7 @@ class EditCarView(UpdateView):
 #     return render(request, 'car-edit.html', context)
 
 
-class DeleteCarView(DeleteView):
+class DeleteCarView(LoginRequiredMixin, DeleteView):
     model = Car
     template_name = 'car-delete.html'
     # form_class = DeleteCarForm
