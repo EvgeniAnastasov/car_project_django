@@ -3,7 +3,7 @@ from django.core.validators import RegexValidator
 from django.utils.deconstruct import deconstructible
 
 
-CharAndNumsOnlyValidator = RegexValidator(r'^[0-9a-zA-Z ]*$', 'Ensure this value contains only letters and numbers')
+CharAndNumsOnlyValidator = RegexValidator(r'^[0-9a-zA-Z- ]*$', 'Ensure this value contains only letters, numbers and -')
 
 
 @deconstructible
