@@ -177,3 +177,7 @@ cloudinary.config(
   api_key="378116882818881",
   api_secret="WjKdnSiDL--Mbl7jGxhGY16h6eU"
 )
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://car-project-django.herokuapp.com/',
+]
