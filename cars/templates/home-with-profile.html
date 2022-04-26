@@ -30,7 +30,7 @@
                 <p class="genre">HP: {{ car.hp }}hp</p>
                 <p class="price">Year: {{ car.year }}</p>
                 <p>Likes: {{ car.like_set.count }}</p>
-                <p>Owner: {{ car.user.email }}</p>
+{#                <p>Owner: {{ car.user.email }}</p>#}
             </div>
             <div class="btn-group">
                 <a href="{% url 'car details' car.pk %}">Details</a>
