@@ -2,7 +2,6 @@
 {% block page_content %}
     {% load static %}
 
-    <!--Details Page-->
     <section class="createPage">
 
         <form method="POST" action="{% url 'profile details' %}" enctype="multipart/form-data">
@@ -21,8 +20,6 @@
                     <button class="add-album" type="submit">Update</button>
 
                     <div class="albumCover">
-                        <!-- Car Image -->
-
 
                     </div>
                 </div>
@@ -40,8 +37,6 @@
         {% if cars %}
             <h1>Your Cars</h1>
         {% endif %}
-
-        <!-- First Card-Box in catalog -->
 
         {% for car in cars %}
 
@@ -64,7 +59,6 @@
                     </div>
                 </div>
             </div>
-            <!-- End First Card-Box in catalog -->
 
         {% endfor %}
 

@@ -5,21 +5,18 @@
 <head>
     <meta charset="UTF-8"/>
     <title>Cars</title>
-    <!-- Static Load -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
 </head>
 
 <body>
 <div id="box">
 
-    <!-- Navigation Bar -->
     <header>
         <nav>
             <img src="/static/images/car2.jpg" alt="car">
             <a href="{% url 'show index' %}">Home</a>
             <ul></ul>
             <ul>
-                <!--Only for user with created profile-->
 
                 {% if request.user.is_authenticated %}
 
@@ -27,7 +24,6 @@
                     <li><a href="{% url 'profile details' %}">Profile</a></li>
                     <li><a href="{% url 'log out user' %}">Logout</a></li>
                     <li><a href="{% url 'profile details' %}">{{ request.user }}</a></li>
-
 
                 {% else %}
 
@@ -39,22 +35,9 @@
             </ul>
         </nav>
     </header>
-    <!-- End Navigation Bar -->
-
-    <!-- Main Content -->
-
 
     {% block page_content %}
     {% endblock %}
-
-
-    <!-- Footer -->
-    {#    <footer>#}
-    {#        <div>#}
-    {#            &copy;SoftUni Team 2022. All rights reserved.#}
-    {#        </div>#}
-    {#    </footer>#}
-    <!-- End Footer -->
 
 </div>
 </body>

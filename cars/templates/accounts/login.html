@@ -1,6 +1,6 @@
 {% extends 'base/base.html' %}
 {% block page_content %}
-{% load static %}
+    {% load static %}
 
     <div class="container">
         <form class="w-50 m-auto" method="POST" action="{% url 'log in user' %}"
@@ -11,6 +11,10 @@
             {{ form }}
 
             <button type="submit" class="register">Login</button>
+
+            <h3>You are not registered?</h3>
+
+            <button onclick="location.href='{% url 'register user' %}'" class="register">Register</button>
 
         </form>
     </div>
