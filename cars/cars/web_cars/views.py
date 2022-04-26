@@ -6,8 +6,8 @@ from django.views import generic as views
 from django.shortcuts import render, redirect
 from django.views.generic import DeleteView, DetailView, CreateView, UpdateView
 
-from cars.web_cars.forms import AddCarForm, EditCarForm, DeleteCarForm
-from cars.web_cars.models import Car, Like
+from cars.web_cars.forms import AddCarForm, EditCarForm, DeleteCarForm, CarPhotoForm
+from cars.web_cars.models import Car, Like, Photos
 
 UserModel = get_user_model()
 
@@ -182,3 +182,29 @@ class DeleteCarView(LoginRequiredMixin, DeleteView):
 #     }
 #
 #     return render(request, 'car-delete.html', context)
+
+
+@login_required()
+def car_photo(request, pk):
+
+    car = Car.objects.get(pk=pk)
+
+    photos = Photos.objects.filter(car_id=pk)
+
+    if request.method == 'POST':
+        form = CarPhotoForm(request.POST, request.FILES)
+        if form.is_valid:
+            car = form.save(commit=False)
+            car.id = car.pk
+            car.save()
+            return redirect('car photos', pk)
+    else:
+        form = CarPhotoForm()
+
+    context = {
+        'form': form,
+        'car': car,
+        'photos': photos,
+    }
+
+    return render(request, 'photos.html', context)
