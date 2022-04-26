@@ -53,6 +53,7 @@ class EditCarForm(forms.ModelForm):
     class Meta:
         model = Car
         fields = '__all__'
+        exclude = ('user', )
 
 
 class DeleteCarForm(forms.ModelForm):
