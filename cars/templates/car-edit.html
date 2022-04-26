@@ -1,7 +1,6 @@
 {% extends 'base/base.html' %}
 {% block page_content %}
 
-<!--Edit Page-->
 <section class="editPage">
 
     <form method="POST" action="{% url 'car edit' car.pk %}" enctype="multipart/form-data">
@@ -9,12 +8,9 @@
             <legend>Edit Car</legend>
             <div class="container">
 
-                <!-- Form for Editing Car -->
-
                 {{ form }}
                 {% csrf_token %}
 
-                <!-- Button for Editing Car -->
                 <button class="edit-album" type="submit">Edit Car</button>
             </div>
         </fieldset>

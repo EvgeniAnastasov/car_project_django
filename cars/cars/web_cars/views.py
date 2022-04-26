@@ -20,7 +20,7 @@ def show_index(request):
         'cars': cars,
     }
 
-    return render(request, 'home-with-profile.html', context)
+    return render(request, 'index.html', context)
 
 
 @login_required()

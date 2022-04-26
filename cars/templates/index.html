@@ -1,0 +1,43 @@
+{% extends 'base/base.html' %}
+{% block page_content %}
+    {% load static %}
+
+    <section id="catalogPage">
+
+        {% if not cars %}
+            <p>No Cars in Catalog!</p>
+        {% endif %}
+
+        {% if cars %}
+            <h1>All Cars</h1>
+        {% endif %}
+
+        {% for car in cars %}
+
+            <div class="card-box">
+
+                {% if car.image %}
+                    <img src="{{ car.image.url }}" alt="Car Image">
+                {% else %}
+                    {#            <img src="{% static 'car1.webp' %}" alt="Car Image">#}
+                {% endif %}
+                <div>
+                    <div class="text-center">
+                        <p class="name">Brand: {{ car.car_brand }}</p>
+                        <p class="artist">Model: {{ car.car_model }}</p>
+                        <p class="genre">HP: {{ car.hp }}hp</p>
+                        <p class="price">Year: {{ car.year }}</p>
+                        <p>Likes: {{ car.like_set.count }}</p>
+                        {#                <p>Owner: {{ car.user.email }}</p>#}
+                    </div>
+                    <div class="btn-group">
+                        <a href="{% url 'car details' car.pk %}">Details</a>
+                    </div>
+                </div>
+            </div>
+
+        {% endfor %}
+
+    </section>
+
+{% endblock %}

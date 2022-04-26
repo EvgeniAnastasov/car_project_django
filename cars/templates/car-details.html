@@ -1,12 +1,11 @@
 {% extends 'base/base.html' %}
 {% block page_content %}
 
-    <!--Details Page-->
     <section id="detailsPage">
         <div class="wrapper">
 
             <div class="albumCover">
-                <!-- Car Image -->
+
                 {% if car.image %}
                     <img src="{{ car.image.url }}" alt="Car Image">
                 {% endif %}
@@ -15,8 +14,6 @@
             <div class="albumInfo">
 
                 <div class="albumText">
-
-                    <!-- Car Info -->
 
                     <h1>Car Brand: {{ car.car_brand }}</h1>
                     <h3>Car Model: {{ car.car_model }}</h3>
@@ -27,7 +24,6 @@
                     <h4>Transmission: {{ car.transmission }}</h4>
                     <h4>Mileage: {{ car.mileage }}km</h4>
                     <h1>Owner: {{ car.user.email }}</h1>
-
 
                     {% if not is_owner %}
                         {% if not is_liked %}
@@ -44,7 +40,6 @@
                 </div>
 
                 <div class="actionBtn">
-                    <!-- Car Buttons -->
 
                     {% if is_owner %}
 
