@@ -17,6 +17,8 @@
                     {{ form }}
                     {% csrf_token %}
 
+                    <h1>Total Cars: {{ user_total_cars }}</h1>
+
                     <button class="add-album" type="submit">Update</button>
 
                     <div class="albumCover">
@@ -26,7 +28,6 @@
             </fieldset>
         </form>
     </section>
-
 
     <section id="catalogPage">
 

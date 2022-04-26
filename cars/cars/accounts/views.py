@@ -126,7 +126,10 @@ class ProfileDetailsView(LoginRequiredMixin, UpdateView):
 
         user_cars = Car.objects.filter(user_id=self.request.user.id)
 
+        user_total_cars = len(user_cars)
+
         context['cars'] = user_cars
+        context['user_total_cars'] = user_total_cars
 
         return context
 

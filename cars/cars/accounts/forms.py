@@ -60,7 +60,7 @@ class ProfileForm(forms.ModelForm):
         model = Profile
         fields = "__all__"
 
-        exclude = ('user', )
+        exclude = ('user', 'total_cars', )
 
         labels = {
             'first_name': 'First Name',
