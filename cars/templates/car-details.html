@@ -23,7 +23,7 @@
                     <h4>Year: {{ car.year }}</h4>
                     <h4>Transmission: {{ car.transmission }}</h4>
                     <h4>Mileage: {{ car.mileage }}km</h4>
-                    <h1>Owner: {{ car.user.email }}</h1>
+                    <h3>Owner: {{ car.user.email }}</h3>
 
                     {% if not is_owner %}
                         {% if not is_liked %}
@@ -33,7 +33,7 @@
                             <div class="btn-group"><a href={% url 'like car' car.id %}>Dislike</a></div>
                         {% endif %}
 
-                        <h3>Likes: {{ car.likes_count }}</h3>
+                        <h3 class="btn-group">Likes: {{ car.likes_count }}</h3>
 
                     {% endif %}
 
