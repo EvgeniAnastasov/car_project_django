@@ -60,7 +60,7 @@ MIDDLEWARE = [
     'django_session_timeout.middleware.SessionTimeoutMiddleware',
 ]
 
-SESSION_EXPIRE_SECONDS = 300
+# SESSION_EXPIRE_SECONDS = 300
 
 ROOT_URLCONF = 'cars.urls'
 
