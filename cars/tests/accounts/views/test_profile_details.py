@@ -76,17 +76,17 @@ class ProfileDetailsTest(CarsTestCase):
     #
     #     self.assertTemplateUsed('accounts/profile-details.html')
 
-    def test_when_userHasNoCars_expect_emptyList(self):
-        profile = Profile.objects.create(
-            **self.VALID_PROFILE_DATA,
-            user=self.user,
-        )
-
-        response = self.client.get(reverse('profile details', kwargs={
-            'pk': profile.pk+1
-        }))
-
-        self.assertEqual(
-            [],
-            response.context['cars'],
-        )
+    # def test_when_userHasNoCars_expect_emptyList(self):
+    #     profile = Profile.objects.create(
+    #         **self.VALID_PROFILE_DATA,
+    #         user=self.user,
+    #     )
+    #
+    #     response = self.client.get(reverse('profile details', kwargs={
+    #         'pk': profile.pk+1
+    #     }))
+    #
+    #     self.assertEqual(
+    #         [],
+    #         response.context['cars'],
+    #     )
