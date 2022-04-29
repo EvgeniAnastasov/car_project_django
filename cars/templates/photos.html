@@ -4,7 +4,7 @@
 {#    <h2>In Progress...</h2>>#}
 
         <section class="createPage">
-
+            {% if is_owner %}
             <form method="POST" action="" enctype="multipart/form-data">
                 <fieldset>
                     <legend>Add Photos</legend>
@@ -17,6 +17,7 @@
                     </div>
                 </fieldset>
             </form>
+            {% endif %}
 
             {% if not photos %}
 

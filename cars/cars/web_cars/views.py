@@ -189,6 +189,8 @@ def car_photo(request, pk):
 
     car = Car.objects.get(pk=pk)
 
+    is_owner = car.user == request.user
+
     photos = Photos.objects.filter(car_id=pk)
 
     if request.method == 'POST':
@@ -205,6 +207,7 @@ def car_photo(request, pk):
         'form': form,
         'car': car,
         'photos': photos,
+        'is_owner': is_owner,
     }
 
     return render(request, 'photos.html', context)
