@@ -34,7 +34,7 @@ DEBUG = os.getenv('DEBUG', 'False') == 'True'
 ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
-    'https://car-project-django.herokuapp.com',
+    'https://car-project-django.herokuapp.com/',
 ]
 
 # Application definition
