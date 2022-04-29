@@ -1,37 +1,37 @@
 {% extends 'base/base.html' %}
 {% block page_content %}
 
-    <h2>In Progress...</h2>>
+{#    <h2>In Progress...</h2>>#}
 
-{#        <section class="createPage">#}
-{##}
-{#            <form method="POST" action="" enctype="multipart/form-data">#}
-{#                <fieldset>#}
-{#                    <legend>Add Photos</legend>#}
-{#                    <div class="container">#}
-{##}
-{#                        {{ form }}#}
-{#                        {% csrf_token %}#}
-{##}
-{#                        <button class="add-album" type="submit">Add Photo</button>#}
-{#                    </div>#}
-{#                </fieldset>#}
-{#            </form>#}
-{##}
-{#            {% if not photos %}#}
-{##}
-{#                <h1>No Photos</h1>#}
-{##}
-{#            {% else %}#}
-{##}
-{#                {% for photo in photos %}#}
-{##}
-{#                    <img src="{{ photo.car_photo.url }}" alt="Car Image">#}
-{##}
-{#                {% endfor %}#}
-{#            {% endif %}#}
-{##}
-{##}
-{#        </section>#}
+        <section class="createPage">
+
+            <form method="POST" action="" enctype="multipart/form-data">
+                <fieldset>
+                    <legend>Add Photos</legend>
+                    <div class="container">
+
+                        {{ form }}
+                        {% csrf_token %}
+
+                        <button class="add-album" type="submit">Add Photo</button>
+                    </div>
+                </fieldset>
+            </form>
+
+            {% if not photos %}
+
+                <h1>No Photos</h1>
+
+            {% else %}
+
+                {% for photo in photos %}
+
+                    <img src="{{ photo.car_photo.url }}" alt="Car Image">
+
+                {% endfor %}
+            {% endif %}
+
+
+        </section>
 
 {% endblock %}

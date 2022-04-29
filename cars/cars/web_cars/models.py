@@ -116,13 +116,12 @@ class Like(models.Model):
 
 
 class Photos(models.Model):
-    car_photo = models.ImageField(
-        upload_to='photos',
-        null=True,
-        blank=True,
-        validators=(
-            MaxFileSizeInMbValidator(10),
-        ),
+    car_photo = CloudinaryField(
+        "Image",
+        overwrite=True,
+        resource_type="image",
+        transformation={"quality": "auto:eco"},
+        format="jpg",
     )
 
     publication_date = models.DateTimeField(

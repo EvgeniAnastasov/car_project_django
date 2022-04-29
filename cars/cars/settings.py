@@ -29,8 +29,13 @@ SECRET_KEY = 'django-insecure-41rl2t0tbw%zy_=yucz*l(kua=3wi!=t$(l7tfe$zu7i(d=^4m
 
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split(' ')
+# ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split(' ')
 
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+    'https://car-project-django.herokuapp.com',
+]
 
 # Application definition
 
